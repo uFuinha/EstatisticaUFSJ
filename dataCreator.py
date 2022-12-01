@@ -4,7 +4,7 @@ from os import system as sys
 sys('rm ./in/*/*.csv')
 
 possibleValues = list(range(0, 10000))
-dataSizes = [20, 50, 100, 300, 500, 5000]
+dataSizes = [20, 50, 100, 300, 500, 1000, 3000, 5000]
 samplesNumber = 15
 sample = []
 

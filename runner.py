@@ -24,7 +24,7 @@ for set in sets:
         file = open(path, 'r')
         sequences = file.readlines()
 
-        buffer[0].append(sequences[0].strip())
+        buffer[0].append(int(sequences[0].strip()))
 
         for i in range(1, len(sequences)):
             sequence = sequences[i].split('; ')
@@ -55,7 +55,7 @@ for set in sets:
     orderAux.sort()
 
     # Determinação dos índices ordenados
-    indexOrder = [buffer[0].index(str(i)) for i in orderAux]
+    indexOrder = [buffer[0].index(i) for i in orderAux]
 
     # Abertura do arquivo de saída
     output = open(outs[o], 'w')
@@ -63,7 +63,10 @@ for set in sets:
     # Escrita dos dados
     for tuple in buffer:
         for i in indexOrder:
-            output.write(f'{float(tuple[i]):.5f},')
+            if buffer.index(tuple) == 0:
+                output.write(f'{int(tuple[i])},')
+            else:
+                output.write(f'{float(tuple[i]):.5f},')
         output.write('\n')
 
     o = o+1
